@@ -3,12 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
-import { TurneroComponent } from './views/turnos/turnero/turnero.component';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'products',
     pathMatch: 'full',
   },
   {
@@ -19,8 +18,12 @@ export const routes: Routes = [
     },
     children: [
       {
-        path: 'turnero',
-        loadChildren: () => import('./views/turnos/turnos.module').then(m => m.TurnosModule)
+        path: 'products',
+        loadChildren: () => import('./views/products/products.module').then(m => m.ProductsModule)
+      },
+      {
+        path: 'orders',
+        loadChildren: () => import('./views/orders/orders.module').then(m => m.OrdersModule)
       }
     ]
   },

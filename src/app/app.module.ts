@@ -39,6 +39,8 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { TurnosModule } from './views/turnos/turnos.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsModule } from './views/products/products.module';
+import { OrdersModule } from './views/orders/orders.module';
 
 @NgModule({
   imports: [
@@ -57,7 +59,9 @@ import { HttpClientModule } from '@angular/common/http';
     IconModule,
     IconSetModule.forRoot(),
     TurnosModule,
-    HttpClientModule
+    HttpClientModule,
+    ProductsModule,
+    OrdersModule
   ],
   declarations: [
     AppComponent,

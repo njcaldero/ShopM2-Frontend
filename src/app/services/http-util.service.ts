@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,16 +11,8 @@ export class HttpUtilService {
 
   urlBase: string = "https://localhost:44323/"
 
-
-  post(resource: string) {
-    var res = this.http.post(this.urlBase + resource,null)
-      .subscribe(data => {   // data is already a JSON object
-        console.log(data);
-          return data;
-      });
-
-  
-
+  post<T>(resource: string) {
+    return this.http.post<T>(this.urlBase + resource, null);
   }
 
 
