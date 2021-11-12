@@ -1,0 +1,39 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-sm-6 col-md-4" *ngFor="let order of orders">
+      <div
+        [ngClass]="order.IdStatus=='1'?'card card-accent-warning':order.IdStatus=='2'?'card card-accent-success':'card card-accent-danger'">
+        <div class="card-header">
+          Order No. <b>{{order.Id}}</b>
+          <div class="card-header-actions">
+            Status: <span
+              [ngClass]="order.IdStatus=='1'?'badge badge-warning':order.IdStatus=='2'?'badge badge-success':'badge badge-danger'">{{getStatus(order.IdStatus)}}</span>
+          </div>
+        </div>
+        <div class="card-body">
+          Purchase Date: <b>{{order.Created_at | date: 'dd/MM/yy'}}</b> <br />
+          Product: {{product.Description}}<br />
+          Quantity: {{order.OrderDetails[0].Quantity}}<br />
+          Total: <b>{{order.OrderDetails[0].TotalPrice | currency: '$': true : '2.0'}}</b>
+          <carousel [interval]="false">
+            <slide>
+              <img src="https://i.linio.com/p/d053c064ecb5d0fe0ee75ff221c7e778-product.webp"
+                alt="{{ product.Description }}">
+            </slide>
+            <slide>
+              <img src="https://i.linio.com/p/16f1a8c0ad88668c50db7fbf299058ac-product.webp"
+                alt="{{ product.Description }}">
+            </slide>
+            <slide>
+              <img src="https://i.linio.com/p/9340370b33b097fec5695308969c3039-product.webp"
+                alt="{{ product.Description }}">
+            </slide>
+          </carousel>
+        </div>
+        <div class="card-footer">
+          <button (click)="goOrderDetail(order.Id)" type="button" class="btn btn-block btn-primary" title="See order detail">Order Detail</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

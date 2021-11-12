@@ -21,7 +21,7 @@ export class ProductComponent implements OnInit {
   }
 
   loadProducts() {
-    this.httpUtil.post<Product[]>('api/v1/product/getall')
+    this.httpUtil.post<Product[]>('product/getall')
       .subscribe(data => {
         this.product = data[0];
       });

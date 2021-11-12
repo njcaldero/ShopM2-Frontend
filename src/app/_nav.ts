@@ -20,20 +20,9 @@ export const navItems: INavData[] =
           icon: 'icon-bell'
         },
         {
-          name: 'Turno',
-          url: '/login',
+          name: 'My Orders',
+          url: '/orders',
           icon: 'icon-cursor'
-        },
-        {
-          name: 'Asesor',
-          url: '/register',
-          icon: 'icon-puzzle'
-        },
-
-        {
-          name: 'Recuperar Turno',
-          url: '/404',
-          icon: 'icon-ban'
         }
       ]
     },

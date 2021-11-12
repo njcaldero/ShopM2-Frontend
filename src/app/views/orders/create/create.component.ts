@@ -7,6 +7,7 @@ import { CreateOrderDto } from '../../../dto/create-order-dto';
 import { Customer } from '../../../interfaces/customer';
 import { OrderDetail } from '../../../interfaces/order-detail';
 import { Status } from '../../../enums/status';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -20,7 +21,7 @@ export class CreateComponent implements OnInit {
   createOrderDto = new CreateOrderDto();
   orderDetail: OrderDetail = {};
 
-  constructor(private formBuilder: FormBuilder, private httpUtil: HttpUtilService) { }
+  constructor(private formBuilder: FormBuilder, private httpUtil: HttpUtilService, private router: Router) { }
 
   ngOnInit(): void {
     this.loadProduct();
@@ -55,13 +56,16 @@ export class CreateComponent implements OnInit {
       listOrderDetail.push(this.orderDetail);
       this.createOrderDto.OrderDetails = listOrderDetail;
 
-      this.createOrderDto.IdStatus = Status.Create;
+      this.createOrderDto.IdStatus = Status.Unpaid;
 
-      this.httpUtil.post('api/v1/order/create', this.createOrderDto)
-        .subscribe(data => {
-          console.log(data);
-        });
-
+      this.httpUtil.post<CreateOrderDto>('order/create', this.createOrderDto)
+        .subscribe(
+          res => {
+            sessionStorage.setItem('orderDetailTemp', JSON.stringify(res));
+            this.router.navigate(['/orders/detail', res.Id]);
+          },
+          err => console.log('HTTP Error', err)
+        );
     } else {
 
       alert("fail");

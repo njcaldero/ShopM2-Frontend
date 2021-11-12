@@ -37,11 +37,11 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
-import { TurnosModule } from './views/turnos/turnos.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './views/products/products.module';
 import { OrdersModule } from './views/orders/orders.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GetStatusPipe } from './pipes/get-status.pipe';
 
 @NgModule({
   imports: [
@@ -59,7 +59,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
-    TurnosModule,
     HttpClientModule,
     ProductsModule,
     OrdersModule
@@ -67,6 +66,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
+    GetStatusPipe,
   ],
   providers: [
     {

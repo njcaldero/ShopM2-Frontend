@@ -1,0 +1,65 @@
+<div class="animated fadeIn" *ngIf="loaded">
+    <div class="row">
+        <div class="col-md-12">
+            <div
+                [ngClass]="order.IdStatus==1?'card card-accent-warning':order.IdStatus==2?'card card-accent-success':'card card-accent-danger'">
+                <div class="card-header">
+                    Summary of your Order No. <b>{{order.Id}}</b>
+                    <div class="card-header-actions">
+                        Status: <span
+                            [ngClass]="order.IdStatus==1?'badge badge-warning':order.IdStatus==2?'badge badge-success':'badge badge-danger'">{{getStatus(order.IdStatus)}}</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Customer</strong>
+                                </div>
+                                <div class="card-body">
+                                    Name: {{order.Customer.Name}}<br />
+                                    Address: {{order.Customer.Address}}<br />
+                                    Email: {{order.Customer.Email}}<br />
+                                    Mobile: {{order.Customer.Mobile}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Order</strong>
+                                </div>
+                                <div class="card-body">
+                                    Purchase Date: <b>{{order.Created_at | date: 'dd/MM/yy'}}</b>
+                                    <br />
+                                    Product: {{product.Description}}<br />
+                                    Quantity: {{order.OrderDetails[0].Quantity}}<br />
+                                    Total: <b>{{order.OrderDetails[0].TotalPrice | currency: '$': true : '2.0'}}</b>
+                                    <carousel [interval]="false">
+                                        <slide>
+                                            <img src="https://i.linio.com/p/d053c064ecb5d0fe0ee75ff221c7e778-product.webp"
+                                                alt="{{product.Description}}">
+                                        </slide>
+                                        <slide>
+                                            <img src="https://i.linio.com/p/16f1a8c0ad88668c50db7fbf299058ac-product.webp"
+                                                alt="{{product.Description}}">
+                                        </slide>
+                                        <slide>
+                                            <img src="https://i.linio.com/p/9340370b33b097fec5695308969c3039-product.webp"
+                                                alt="{{product.Description}}">
+                                        </slide>
+                                    </carousel>
+                                </div>
+                                <div class="card-footer">
+                                    <button [disabled]="order.IdStatus==2" (click)="goToPay()" type="button"
+                                        class="btn btn-block btn-primary" title="Go to pay">Pay</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
