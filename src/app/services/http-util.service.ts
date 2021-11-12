@@ -11,8 +11,8 @@ export class HttpUtilService {
 
   urlBase: string = "https://localhost:44323/"
 
-  post<T>(resource: string) {
-    return this.http.post<T>(this.urlBase + resource, null);
+  post<T>(resource: string, body?: any) {
+    return this.http.post<T>(this.urlBase + resource, body);
   }
 
 

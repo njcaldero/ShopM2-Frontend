@@ -41,6 +41,7 @@ import { TurnosModule } from './views/turnos/turnos.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductsModule } from './views/products/products.module';
 import { OrdersModule } from './views/orders/orders.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -74,6 +75,6 @@ import { OrdersModule } from './views/orders/orders.module';
     },
     IconSetService,
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

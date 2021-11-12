@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { OrdersRoutingModule } from './orders-routing.module';
 import { CreateComponent } from './create/create.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
   imports: [
     CommonModule,
     OrdersRoutingModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class OrdersModule { }
