@@ -15,6 +15,7 @@ export class OrderDetailComponent implements OnInit {
   order: OrdersDto = {};
   idOrder;
   loaded: boolean = false;
+  processUrl;
 
   constructor(private route: ActivatedRoute, private httpUtil: HttpUtilService, private router: Router) {
     this.idOrder = route.snapshot.paramMap.get('id');
@@ -31,6 +32,7 @@ export class OrderDetailComponent implements OnInit {
         res => {
           this.order = res;
           this.loaded = true;
+          this.checkPayment();
         },
         err => console.log('HTTP Error', err)
       );
@@ -42,7 +44,34 @@ export class OrderDetailComponent implements OnInit {
   }
 
   goToPay() {
-    window.location.href = 'http://www.google.com.co';
+    this.httpUtil.post<string>('order/PayOrder', { "id": this.idOrder })
+      .subscribe(
+        res => {
+          window.location.href = res;
+        },
+        err => {
+          console.log('HTTP Error', err);
+          alert('Try again please');
+        }
+      );
+
+  }
+
+  checkPayment() {
+    if (this.order.IdStatus != Status.Payed) {
+      this.httpUtil.post<OrdersDto>('order/CheckPayment', { "id": this.idOrder })
+        .subscribe(
+          res => {
+            if (res != null)
+              this.order = res;
+          },
+          err => {
+            console.log('HTTP Error', err);
+            alert('Try again please');
+          }
+        );
+    }
+
   }
 
 

@@ -23,7 +23,12 @@
                                     Email: {{order.Customer.Email}}<br />
                                     Mobile: {{order.Customer.Mobile}}
                                 </div>
-                            </div>
+                            </div><br /><br />
+                            <alert type="success" *ngIf="order.IdStatus==2">
+                                <div role="alert" class="alert alert-success">
+                                    <h4 class="alert-heading">Well done!</h4> Payment has been made correctly!!!
+                                </div>
+                            </alert>
                         </div>
                         <div class="col-md-6">
                             <div class="card">
