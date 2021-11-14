@@ -17,10 +17,8 @@ export class HttpUtilService {
     });
   }
 
-
   post<T>(resource: string, body?: any) {
     return this.http.post<T>(this.urlBase + resource, body);
   }
-
 
 }
