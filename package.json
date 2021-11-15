@@ -28,6 +28,8 @@
   },
   "private": true,
   "dependencies": {
+     "@angular/cli": "^12.2.6",
+    "@angular/compiler-cli": "^12.2.6",
     "@angular/animations": "^12.2.6",
     "@angular/common": "~12.2.6",
     "@angular/cdk": "^12.2.6",
@@ -58,7 +60,8 @@
     "ts-helpers": "^1.1.2",
     "tslib": "^2.0.0",
     "web-animations-js": "^2.3.2",
-    "zone.js": "^0.11.4"
+    "zone.js": "^0.11.4",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.3",
