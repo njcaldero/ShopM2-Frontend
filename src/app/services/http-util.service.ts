@@ -9,7 +9,7 @@ export class HttpUtilService {
   constructor(private http: HttpClient) {
   }
 
-  urlBase: string = "https://localhost:44323/api/v1/"
+  urlBase: string = "http://nescalro-001-site1.htempurl.com/api/v1/"
   private setHeaders() {
     return new HttpHeaders({
       'Content-Type': 'application/json',
@@ -17,8 +17,10 @@ export class HttpUtilService {
     });
   }
 
+
   post<T>(resource: string, body?: any) {
     return this.http.post<T>(this.urlBase + resource, body);
   }
+
 
 }
