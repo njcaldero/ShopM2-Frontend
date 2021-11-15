@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +9,17 @@ export class HttpUtilService {
   constructor(private http: HttpClient) {
   }
 
-  urlBase: string = "https://localhost:44323/"
+  urlBase: string = "http://nescalro-001-site1.htempurl.com/api/v1/"
+  private setHeaders() {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    });
+  }
 
 
-  post(resource: string) {
-    var res = this.http.post(this.urlBase + resource,null)
-      .subscribe(data => {   // data is already a JSON object
-        console.log(data);
-          return data;
-      });
-
-  
-
+  post<T>(resource: string, body?: any) {
+    return this.http.post<T>(this.urlBase + resource, body);
   }
 
 
